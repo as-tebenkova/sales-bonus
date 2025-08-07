@@ -61,7 +61,11 @@ function analyzeSalesData(data, options) {
     throw new Error("Некорректные входные данные");
   }
   // @TODO: Проверка наличия опций
-  if (!typeof options === "object" || !typeof calculateRevenue === "function") {
+  if (
+    !typeof options === "object" ||
+    !typeof calculateSimpleRevenue === "function" ||
+    !typeof calculateBonusByProfit === "function"
+  ) {
     throw new Error("Чего-то не хватает");
   }
   // @TODO: Подготовка промежуточных данных для сбора статистики
