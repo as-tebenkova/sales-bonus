@@ -91,6 +91,9 @@ function analyzeSalesData(data, options) {
   data.purchase_records.forEach((record) => {
     // Чек
     const seller = sellerIndex[record.seller_id]; // Продавец
+    if (!seller) {
+      console.warn(`Продавец не найден: ${record.seller_id}`);
+    }
 
     // Увеличить количество продаж
     seller.sales_count++;
@@ -101,6 +104,9 @@ function analyzeSalesData(data, options) {
     // Расчёт прибыли для каждого товара
     record.items.forEach((item) => {
       const product = productIndex[item.sku]; // Товар
+      if (!product) {
+        console.warn(`Товар не найден: ${item.sku}`);
+      }
 
       // Посчитать себестоимость (cost) товара как product.purchase_price, умноженную на количество товаров из чека
       const cost = product.purchase_price * item.quantity;
