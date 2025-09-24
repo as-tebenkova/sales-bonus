@@ -60,6 +60,9 @@ function analyzeSalesData(data, options) {
   ) {
     throw new Error("Некорректные входные данные");
   }
+
+  const { calculateSimpleRevenue, calculateBonusByProfit } = options; // Сюда передадим функции для расчётов
+
   // @TODO: Проверка наличия опций
   if (
     !typeof options === "object" ||
