@@ -64,6 +64,7 @@ function analyzeSalesData(data, options) {
   // @TODO: Проверка наличия опций
   if (
     !typeof options === "object" ||
+    !options ||
     !typeof calculateSimpleRevenue === "function" ||
     !typeof calculateBonusByProfit === "function"
   ) {
