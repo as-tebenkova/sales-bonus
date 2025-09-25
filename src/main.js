@@ -5,7 +5,7 @@
  * @returns {number}
  */
 function calculateSimpleRevenue(purchase, _product) {
-  //const { calculateRevenue, calculateBonus } = options;
+  
   // @TODO: Расчет выручки от операции
   const { discount, sale_price, quantity } = purchase;
 
@@ -60,8 +60,6 @@ function analyzeSalesData(data, options) {
   ) {
     throw new Error("Некорректные входные данные");
   }
-
-  const { calculateSimpleRevenue, calculateBonusByProfit } = options; // Сюда передадим функции для расчётов
 
   // @TODO: Проверка наличия опций
   if (
