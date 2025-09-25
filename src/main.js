@@ -63,13 +63,24 @@ function analyzeSalesData(data, options) {
 
   // @TODO: Проверка наличия опций
   if (
-    !typeof options === "object" ||
-    !options ||
-    !typeof calculateSimpleRevenue === "function" ||
-    !typeof calculateBonusByProfit === "function"
-  ) {
+    typeof options !== "object" ||
+    options === null)
+    {
+      throw new Error("Опции отсутствуют");
+    }
+
+    const { calculateRevenue, calculateBonus } = options;
+
+if (!calculateRevenue || !calculateBonus) {
     throw new Error("Чего-то не хватает");
   }
+  if (
+    typeof calculateRevenue !== "function" ||
+    typeof calculateBonus !== "function"
+  ) {
+    throw new Error("В опциях должны быть функции для расчёта");
+  }
+  
   // @TODO: Подготовка промежуточных данных для сбора статистики
   const sellerStats = data.sellers.map((seller) => ({
     id: seller.id,
